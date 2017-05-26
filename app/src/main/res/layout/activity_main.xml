@@ -32,11 +32,27 @@
         android:id="@+id/searchByNameButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"
-        android:text="Search by name" />
+        android:text="Search by name"
+        android:layout_below="@+id/textInputLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:id="@+id/textInputLayout2">
+
+        <EditText
+            android:id="@+id/searchText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search by name, type, or set" />
+    </android.support.design.widget.TextInputLayout>
 
 </RelativeLayout>
