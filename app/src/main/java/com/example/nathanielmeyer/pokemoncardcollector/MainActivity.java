@@ -13,7 +13,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String TAG = MainActivity.class.getSimpleName();
     @Bind(R.id.searchByNameButton) Button mSearchByNameButton;
     @Bind(R.id.searchText) EditText mSearchText;
 
@@ -25,9 +24,8 @@ public class MainActivity extends AppCompatActivity {
         mSearchByNameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Searching...", Toast.LENGTH_LONG).show();
                 String searchString = mSearchText.getText().toString();
-                Log.d(TAG, searchString);
+                Toast.makeText(MainActivity.this, "Searching for " + searchString + "...", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, SearchResults.class);
                 intent.putExtra("searchString", searchString);
                 startActivity(intent);
