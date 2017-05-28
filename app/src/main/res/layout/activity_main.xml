@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Search by name"
         android:layout_marginTop="36dp"
+        android:textSize="60sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView"
