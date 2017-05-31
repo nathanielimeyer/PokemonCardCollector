@@ -3,6 +3,7 @@ package com.example.nathanielmeyer.pokemoncardcollector.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,12 +12,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nathanielmeyer.pokemoncardcollector.R;
+import com.example.nathanielmeyer.pokemoncardcollector.services.PokemonTCGService;
+
+import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class SearchResults extends AppCompatActivity {
+    public static final String TAG = SearchResults.class.getSimpleName();
+
     @Bind(R.id.resultsTextView) TextView mResultsTextView;
+
     private String[] results = new String[] {"Pikachu", "Bulbasaur",
             "Flutterby", "Meowth", "Ekans", "Clefairy",
             "Clefable", "Charizard", "Squirtle", "Goldeen",
@@ -45,6 +55,27 @@ public class SearchResults extends AppCompatActivity {
         Intent intent = getIntent();
         String searchString = intent.getStringExtra("searchString");
         mResultsTextView.setText("Results for " + searchString + ":");
+        getCardsByName(searchString);
 
+    }
+
+    private void getCardsByName(String name) {
+        final PokemonTCGService pokemonTCGService = new PokemonTCGService();
+        pokemonTCGService.findCardsByName(name, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    Log.v(TAG, jsonData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
