@@ -12,9 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nathanielmeyer.pokemoncardcollector.R;
+import com.example.nathanielmeyer.pokemoncardcollector.models.Card;
 import com.example.nathanielmeyer.pokemoncardcollector.services.PokemonTCGService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,6 +34,8 @@ public class SearchResults extends AppCompatActivity {
             "Clefable", "Charizard", "Squirtle", "Goldeen",
             "Lickitung", "Snorlax", "Dugduo", "Spearow", "Ratatat"};
     @Bind(R.id.listView) ListView mListView;
+
+    public ArrayList<Card> mCards = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +75,10 @@ public class SearchResults extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
+                    if (response.isSuccessful()) {
+                        Log.v(TAG, jsonData);
+                        mCards = PokemonTCGService.processResults(response);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

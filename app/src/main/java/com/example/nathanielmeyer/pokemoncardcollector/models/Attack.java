@@ -6,10 +6,10 @@ public class Attack {
     private ArrayList<String> mCost  = new ArrayList<>();
     private String mName;
     private String mText;
-    private int mDamage;
+    private String mDamage;
     private int mConvertedEnergyCost;
 
-    public Attack(ArrayList<String> cost, String name, String text, int damage, int convertedEnergyCost) {
+    public Attack(ArrayList<String> cost, String name, String text, String damage, int convertedEnergyCost) {
         this.mCost = cost;
         this.mName = name;
         this.mText = text;
@@ -29,7 +29,7 @@ public class Attack {
         return mText;
     }
 
-    public int getDamage() {
+    public String getDamage() {
         return mDamage;
     }
 
