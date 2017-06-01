@@ -44,4 +44,22 @@ public class Card {
         this.mAttacks = attacks;
         this.mWeaknesses = weaknesses;
     }
+
+    public String getId() { return mId; }
+    public String getName() { return mName; }
+    public int getNationalPokedexNumber() { return mNationalPokedexNumber; }
+    public String getImageUrl() { return mImageUrl; }
+    public String getmImageUrlHiRes() { return mImageUrlHiRes; }
+    public String getSubtype() { return mSubtype; }
+    public String getSupertype() { return mSupertype; }
+    public int getHp() { return mHp; }
+    public ArrayList<String> getRetreatCost() { return mRetreatCost; }
+    public int getNumber() { return mNumber; }
+    public String getArtist() { return mArtist; }
+    public String getSeries() { return mSeries; }
+    public String getSet() { return mSet; }
+    public String getSetCode() { return mSetCode; }
+    public ArrayList<String> getTypes() { return mTypes; }
+    public ArrayList<Attack> getAttacks() { return mAttacks; }
+    public ArrayList<Weakness> getWeaknesses() { return  mWeaknesses; }
 }

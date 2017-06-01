@@ -1,13 +1,20 @@
 package com.example.nathanielmeyer.pokemoncardcollector.models;
 
-/**
- * Created by Guest on 5/31/17.
- */
-
 public class Weakness {
     private String mType;
     private String mValue;
 
+    public Weakness(String type, String value) {
+        this.mType = type;
+        this.mValue = value;
+    }
+
+    public String getType() {
+        return mType;
+    }
+
+    public String getValue() {
+        return mValue;
     }
 }
 
