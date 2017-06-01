@@ -3,12 +3,23 @@ package com.example.nathanielmeyer.pokemoncardcollector.services;
 import android.util.Log;
 
 import com.example.nathanielmeyer.pokemoncardcollector.Constants;
+import com.example.nathanielmeyer.pokemoncardcollector.models.Attack;
+import com.example.nathanielmeyer.pokemoncardcollector.models.Card;
+import com.example.nathanielmeyer.pokemoncardcollector.models.Weakness;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
 public class PokemonTCGService {
     public static final String TAG = PokemonTCGService.class.getSimpleName();
@@ -28,5 +39,82 @@ public class PokemonTCGService {
         Log.v(TAG, request.toString());
         Call call = client.newCall(request);
         call.enqueue(callback);
+    }
+    public ArrayList<Card> processResults(Response response) {
+        ArrayList<Card> cards = new ArrayList<>();
+
+        try{
+            String jsonData = response.body().string();
+            if (response.isSuccessful()) {
+                JSONObject pokemonJSON = new JSONObject(jsonData);
+                JSONArray cardsJSON = pokemonJSON.getJSONArray("cards");
+                for (int i = 0; i < cardsJSON.length(); i++) {
+                    JSONObject cardJSON = cardsJSON.getJSONObject(i);
+                    String id = cardJSON.getString("id");
+                    String cardName = cardJSON.getString("name");
+                    int nationalPokedexNumber = cardJSON.getInt("nationalPokedexNumber");
+                    String imageUrl = cardJSON.getString("imageUrl");
+                    String imageUrlHiRes = cardJSON.getString("imageUrlHiRes");
+                    String subtype = cardJSON.getString("subtype");
+                    String supertype = cardJSON.getString("supertype");
+                    int hp = cardJSON.getInt("hp");
+
+                    ArrayList<String> retreatCosts = new ArrayList<>();
+                    JSONArray retreatCostJSON = cardJSON.getJSONArray("retreatCost");
+                    for (int y = 0; y < retreatCostJSON.length(); y++) {
+                        retreatCosts.add(retreatCostJSON.getJSONArray(y).toString());
+                    }
+
+                    int number = cardJSON.getInt("number");
+                    String artist = cardJSON.getString("artist");
+                    String series = cardJSON.getString("series");
+                    String set = cardJSON.getString("set");
+                    String setCode = cardJSON.getString("setCode");
+
+                    ArrayList<String> types = new ArrayList<>();
+                    JSONArray typesJSON = cardJSON.getJSONArray("types");
+                    for (int y = 0; y < typesJSON.length(); y++) {
+                        types.add(typesJSON.getJSONArray(y).get(0).toString());
+                    }
+
+                    ArrayList<Attack> attacks = new ArrayList<>();
+                    JSONArray attacksJSON = cardJSON.getJSONArray("attacks");
+                    for (int y = 0; y < attacksJSON.length(); y++) {
+                        JSONObject attackJSON = attacksJSON.getJSONObject(y);
+                        ArrayList<String> costs = new ArrayList<>();
+                        JSONArray costsJSON = attackJSON.getJSONArray("cost");
+                        for (int z = 0; z < costsJSON.length(); z++) {
+                            costs.add(costsJSON.getJSONArray(z).toString());
+                        }
+                        String attackName = attackJSON.getString("name");
+                        String text = attackJSON.getString("text");
+                        int damage = attackJSON.getInt("damage");
+                        int convertedEnergyCost = attackJSON.getInt("convertedEnergyCost");
+                        Attack attack = new Attack(costs, attackName, text, damage, convertedEnergyCost);
+                        attacks.add(attack);
+                    }
+
+                    ArrayList<Weakness> weaknesses = new ArrayList<>();
+                    JSONArray weaknessesJSON = cardJSON.getJSONArray("weaknesses");
+                    for (int y = 0; y < weaknessesJSON.length(); y++) {
+                        JSONObject weaknessJSON = weaknessesJSON.getJSONObject(y);
+                        String type = weaknessJSON.getString("type");
+                        String value = weaknessJSON.getString("value");
+                        Weakness weakness = new Weakness(type, value);
+                        weaknesses.add(weakness);
+                    }
+
+                    Card card = new Card(id, cardName, nationalPokedexNumber, imageUrl,
+                            imageUrlHiRes, subtype, supertype, hp, retreatCosts, number, artist,
+                            series, set, setCode, types, attacks, weaknesses);
+                    cards.add(card);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return cards;
     }
 }
