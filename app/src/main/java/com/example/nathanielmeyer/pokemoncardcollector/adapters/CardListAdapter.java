@@ -1,6 +1,7 @@
 package com.example.nathanielmeyer.pokemoncardcollector.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 
 import com.example.nathanielmeyer.pokemoncardcollector.R;
 import com.example.nathanielmeyer.pokemoncardcollector.models.Card;
+import com.example.nathanielmeyer.pokemoncardcollector.ui.CardDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -44,7 +48,7 @@ private Context mContext;
     }
 
 
-    public class CardViewHolder extends RecyclerView.ViewHolder {
+    public class CardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.cardImageView) ImageView mCardImageView;
         @Bind(R.id.cardNameTextView) TextView mNameTextView;
         @Bind(R.id.pokemonTypeView) TextView mPokemonTypeTextView;
@@ -56,6 +60,16 @@ private Context mContext;
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, CardDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("cards", Parcels.wrap(mCards));
+            mContext.startActivity(intent);
         }
 
         public void bindCard(Card card) {

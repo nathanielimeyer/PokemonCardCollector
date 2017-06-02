@@ -31,7 +31,7 @@ public class CardDetailFragment extends Fragment {
 
     private Card mCard;
 
-    public CardDetailFragment newInstance(Card card) {
+    public static CardDetailFragment newInstance(Card card) {
         CardDetailFragment cardDetailFragment = new CardDetailFragment();
         Bundle args = new Bundle();
         args.putParcelable("card", Parcels.wrap(card));
@@ -51,10 +51,10 @@ public class CardDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_card_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext()).load(mCard.getImageUrl()).into(mImageLabel);
+        Picasso.with(view.getContext()).load(mCard.getmImageUrlHiRes()).into(mImageLabel);
         mNameLabel.setText(mCard.getName());
-        mHpLabel.setText(mCard.getHp());
-//        mTypeLabel.setText(mCard.getTypes());
+        mHpLabel.setText("HP: " + mCard.getHp());
+        mTypeLabel.setText(mCard.getTypes().get(0));
         mFavoriteLabel.setText("Favorite coming soon");
         mCollectionLabel.setText("Collections coming soon");
         mAddToDeckLabel.setText("Decks coming soon");
