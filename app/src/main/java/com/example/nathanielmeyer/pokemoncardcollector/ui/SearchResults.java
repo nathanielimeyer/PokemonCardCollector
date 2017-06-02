@@ -3,6 +3,8 @@ package com.example.nathanielmeyer.pokemoncardcollector.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nathanielmeyer.pokemoncardcollector.R;
+import com.example.nathanielmeyer.pokemoncardcollector.adapters.CardListAdapter;
 import com.example.nathanielmeyer.pokemoncardcollector.models.Card;
 import com.example.nathanielmeyer.pokemoncardcollector.services.PokemonTCGService;
 
@@ -26,6 +29,9 @@ import okhttp3.Response;
 
 public class SearchResults extends AppCompatActivity {
     public static final String TAG = SearchResults.class.getSimpleName();
+
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private CardListAdapter mAdapter;
 
     @Bind(R.id.resultsTextView) TextView mResultsTextView;
 
@@ -62,13 +68,19 @@ public class SearchResults extends AppCompatActivity {
                 SearchResults.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String[] cardNames = new String[mCards.size()];
-                        for (int i = 0; i < cardNames.length; i++) {
-                            cardNames[i] = mCards.get(i).getName();
-                        }
+                        mAdapter = new CardListAdapter(getApplicationContext(), mCards);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SearchResults.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
 
-                        ArrayAdapter adapter = new ArrayAdapter(SearchResults.this, android.R.layout.simple_list_item_1, cardNames);
-                        mListView.setAdapter(adapter);
+//                        String[] cardNames = new String[mCards.size()];
+//                        for (int i = 0; i < cardNames.length; i++) {
+//                            cardNames[i] = mCards.get(i).getName();
+//                        }
+//
+//                        ArrayAdapter adapter = new ArrayAdapter(SearchResults.this, android.R.layout.simple_list_item_1, cardNames);
+//                        mListView.setAdapter(adapter);
 
 //                        for (Card card : mCards) {
 //                            Log.d(TAG, "Id: " + card.getId());
