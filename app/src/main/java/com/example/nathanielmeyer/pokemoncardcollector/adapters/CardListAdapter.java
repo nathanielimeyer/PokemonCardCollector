@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.nathanielmeyer.pokemoncardcollector.R;
 import com.example.nathanielmeyer.pokemoncardcollector.models.Card;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -58,6 +59,7 @@ private Context mContext;
         }
 
         public void bindCard(Card card) {
+            Picasso.with(mContext).load(card.getImageUrl()).into(mCardImageView);
             mNameTextView.setText(card.getName());
             mPokemonTypeTextView.setText(card.getTypes().get(0));
             mHpTextView.setText("HP: " + card.getHp());
