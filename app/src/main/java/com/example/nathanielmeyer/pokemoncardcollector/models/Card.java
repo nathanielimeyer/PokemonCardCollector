@@ -1,25 +1,31 @@
 package com.example.nathanielmeyer.pokemoncardcollector.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
+@Parcel
 public class Card {
-    private String mId;
-    private String mName;
-    private int mNationalPokedexNumber;
-    private String mImageUrl;
-    private String mImageUrlHiRes;
-    private String mSubtype;
-    private String mSupertype;
-    private int mHp;
-    private ArrayList<String> mRetreatCost = new ArrayList<>();
-    private int mNumber;
-    private String mArtist;
-    private String mSeries;
-    private String mSet;
-    private String mSetCode;
-    private ArrayList<String> mTypes = new ArrayList<>();
-    private ArrayList<Attack> mAttacks = new ArrayList<>();
-    private ArrayList<Weakness> mWeaknesses = new ArrayList<>();
+    String mId;
+    String mName;
+    int mNationalPokedexNumber;
+    String mImageUrl;
+    String mImageUrlHiRes;
+    String mSubtype;
+    String mSupertype;
+    int mHp;
+    ArrayList<String> mRetreatCost = new ArrayList<>();
+    int mNumber;
+    String mArtist;
+    String mSeries;
+    String mSet;
+    String mSetCode;
+    ArrayList<String> mTypes = new ArrayList<>();
+    ArrayList<Attack> mAttacks = new ArrayList<>();
+    ArrayList<Weakness> mWeaknesses = new ArrayList<>();
+
+    public Card() {
+    }
 
     public Card(String id, String name, int nationalPokedexNumber, String imageUrl,
             String imageUrlHiRes, String subtype, String supertype, int hp,
