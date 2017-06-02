@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String searchString = mSearchText.getText().toString();
                 Toast.makeText(MainActivity.this, "Searching for " + searchString + "...", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(MainActivity.this, SearchResults.class);
+                Intent intent = new Intent(MainActivity.this, CardListActivity.class);
                 intent.putExtra("searchString", searchString);
                 startActivity(intent);
             }
