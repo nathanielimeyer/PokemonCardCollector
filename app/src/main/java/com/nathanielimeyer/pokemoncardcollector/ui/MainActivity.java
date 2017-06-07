@@ -1,4 +1,4 @@
-package com.example.nathanielmeyer.pokemoncardcollector.ui;
+package com.nathanielimeyer.pokemoncardcollector.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nathanielmeyer.pokemoncardcollector.R;
+import com.nathanielimeyer.pokemoncardcollector.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

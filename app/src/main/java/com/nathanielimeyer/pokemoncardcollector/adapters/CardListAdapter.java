@@ -1,4 +1,4 @@
-package com.example.nathanielmeyer.pokemoncardcollector.adapters;
+package com.nathanielimeyer.pokemoncardcollector.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.nathanielmeyer.pokemoncardcollector.R;
-import com.example.nathanielmeyer.pokemoncardcollector.models.Card;
-import com.example.nathanielmeyer.pokemoncardcollector.ui.CardDetailActivity;
+import com.nathanielimeyer.pokemoncardcollector.R;
+import com.nathanielimeyer.pokemoncardcollector.models.Card;
+import com.nathanielimeyer.pokemoncardcollector.ui.CardDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;

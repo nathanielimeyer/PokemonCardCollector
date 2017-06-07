@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "553649382355",
+    "firebase_url": "https://pokemoncollector-47541.firebaseio.com",
+    "project_id": "pokemoncollector-47541",
+    "storage_bucket": "pokemoncollector-47541.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553649382355:android:96c52aa047ccfa8c",
+        "android_client_info": {
+          "package_name": "com.nathanielimeyer.pokemoncardcollector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553649382355-spnaphl96bdocs3ka0mvj30581a31hk5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nathanielimeyer.pokemoncardcollector",
+            "certificate_hash": "aba951f74bddeef1aef30c20e94815b0527e141f"
+          }
+        },
+        {
+          "client_id": "553649382355-6h1cu10gmifbpvi2l4nf4op4m35kvr6a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgEmza_p5SjF-kQXiS9bnC8Gavx9JLCzo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553649382355-6h1cu10gmifbpvi2l4nf4op4m35kvr6a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

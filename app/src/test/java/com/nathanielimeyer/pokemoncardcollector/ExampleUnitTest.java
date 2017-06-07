@@ -1,4 +1,4 @@
-package com.example.nathanielmeyer.pokemoncardcollector;
+package com.nathanielimeyer.pokemoncardcollector;
 
 import org.junit.Test;
 

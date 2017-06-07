@@ -1,4 +1,4 @@
-package com.example.nathanielmeyer.pokemoncardcollector.ui;
+package com.nathanielimeyer.pokemoncardcollector.ui;
 
 
 import android.os.Bundle;
@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.nathanielmeyer.pokemoncardcollector.R;
-import com.example.nathanielmeyer.pokemoncardcollector.models.Card;
+import com.nathanielimeyer.pokemoncardcollector.R;
+import com.nathanielimeyer.pokemoncardcollector.models.Card;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
-import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

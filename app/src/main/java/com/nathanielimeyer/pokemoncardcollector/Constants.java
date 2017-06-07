@@ -1,4 +1,4 @@
-package com.example.nathanielmeyer.pokemoncardcollector;
+package com.nathanielimeyer.pokemoncardcollector;
 
 public class Constants {
 //    public static final String YELP_CONSUMER_KEY = BuildConfig.YELP_CONSUMER_KEY;

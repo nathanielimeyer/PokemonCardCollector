@@ -1,11 +1,11 @@
-package com.example.nathanielmeyer.pokemoncardcollector.adapters;
+package com.nathanielimeyer.pokemoncardcollector.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.nathanielmeyer.pokemoncardcollector.models.Card;
-import com.example.nathanielmeyer.pokemoncardcollector.ui.CardDetailFragment;
+import com.nathanielimeyer.pokemoncardcollector.models.Card;
+import com.nathanielimeyer.pokemoncardcollector.ui.CardDetailFragment;
 
 import java.util.ArrayList;
 

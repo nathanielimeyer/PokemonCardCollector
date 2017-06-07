@@ -1,4 +1,4 @@
-package com.example.nathanielmeyer.pokemoncardcollector.models;
+package com.nathanielimeyer.pokemoncardcollector.models;
 
 import java.util.ArrayList;
 

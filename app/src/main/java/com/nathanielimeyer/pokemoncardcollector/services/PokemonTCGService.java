@@ -1,11 +1,9 @@
-package com.example.nathanielmeyer.pokemoncardcollector.services;
+package com.nathanielimeyer.pokemoncardcollector.services;
 
 import android.util.Log;
 
-import com.example.nathanielmeyer.pokemoncardcollector.Constants;
-import com.example.nathanielmeyer.pokemoncardcollector.models.Attack;
-import com.example.nathanielmeyer.pokemoncardcollector.models.Card;
-import com.example.nathanielmeyer.pokemoncardcollector.models.Weakness;
+import com.nathanielimeyer.pokemoncardcollector.Constants;
+import com.nathanielimeyer.pokemoncardcollector.models.Card;
 
 import org.json.JSONArray;
 import org.json.JSONException;

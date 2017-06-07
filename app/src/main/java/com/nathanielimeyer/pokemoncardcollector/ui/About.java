@@ -1,9 +1,9 @@
-package com.example.nathanielmeyer.pokemoncardcollector.ui;
+package com.nathanielimeyer.pokemoncardcollector.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.nathanielmeyer.pokemoncardcollector.R;
+import com.nathanielimeyer.pokemoncardcollector.R;
 
 public class About extends AppCompatActivity {
 
