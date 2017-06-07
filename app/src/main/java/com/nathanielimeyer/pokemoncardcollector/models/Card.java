@@ -15,7 +15,7 @@ public class Card {
     String mSupertype;
     int mHp;
     ArrayList<String> mRetreatCost = new ArrayList<>();
-    int mNumber;
+    String mNumber;
     String mArtist;
     String mSeries;
     String mSet;
@@ -34,7 +34,7 @@ public class Card {
 //            ArrayList<Weakness> weaknesses) {
 public Card(String id, String name, int nationalPokedexNumber, String imageUrl,
             String imageUrlHiRes, String subtype, String supertype, int hp,
-            ArrayList<String> retreatCost, int number, String artist, String series, String set,
+            ArrayList<String> retreatCost, String number, String artist, String series, String set,
             String setCode, ArrayList<String> types) {
         this.mId = id;
         this.mName = name;
@@ -64,7 +64,7 @@ public Card(String id, String name, int nationalPokedexNumber, String imageUrl,
     public String getSupertype() { return mSupertype; }
     public int getHp() { return mHp; }
     public ArrayList<String> getRetreatCost() { return mRetreatCost; }
-    public int getNumber() { return mNumber; }
+    public String getNumber() { return mNumber; }
     public String getArtist() { return mArtist; }
     public String getSeries() { return mSeries; }
     public String getSet() { return mSet; }
