@@ -69,32 +69,6 @@ public class CardListActivity extends AppCompatActivity {
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
 
-//                        String[] cardNames = new String[mCards.size()];
-//                        for (int i = 0; i < cardNames.length; i++) {
-//                            cardNames[i] = mCards.get(i).getName();
-//                        }
-//
-//                        ArrayAdapter adapter = new ArrayAdapter(CardListActivity.this, android.R.layout.simple_list_item_1, cardNames);
-//                        mListView.setAdapter(adapter);
-
-//                        for (Card card : mCards) {
-//                            Log.d(TAG, "Id: " + card.getId());
-//                            Log.d(TAG, "Name: " + card.getName());
-//                            Log.d(TAG, "ImageUrl: " + card.getImageUrl());
-//                            Log.d(TAG, "ImageUrlHiRes: " + card.getmImageUrlHiRes());
-//                            Log.d(TAG, "Subtype: " + card.getSubtype());
-//                            Log.d(TAG, "Supertype: " + card.getSupertype());
-//                            Log.d(TAG, "Hp: " + card.getHp());
-//                            Log.d(TAG, "Retreat Cost: " + card.getRetreatCost());
-//                            Log.d(TAG, "Number: " + card.getNumber());
-//                            Log.d(TAG, "Artist: " + card.getArtist());
-//                            Log.d(TAG, "Series: " + card.getSeries());
-//                            Log.d(TAG, "Set: " + card.getSet());
-//                            Log.d(TAG, "SetCode: " + card.getSetCode());
-//                            Log.d(TAG, "Types: " + card.getTypes());
-//                            Log.d(TAG, "Attacks: " + card.getAttacks());
-//                            Log.d(TAG, "Weaknesses: " + card.getWeaknesses());
-//                        }
                     }
                 });
             }

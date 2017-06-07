@@ -21,17 +21,10 @@ public class Card {
     String mSet;
     String mSetCode;
     ArrayList<String> mTypes = new ArrayList<>();
-//    ArrayList<Attack> mAttacks = new ArrayList<>();
-//    ArrayList<Weakness> mWeaknesses = new ArrayList<>();
 
     public Card() {
     }
 
-//    public Card(String id, String name, int nationalPokedexNumber, String imageUrl,
-//            String imageUrlHiRes, String subtype, String supertype, int hp,
-//            ArrayList<String> retreatCost, int number, String artist, String series, String set,
-//            String setCode, ArrayList<String> types, ArrayList<Attack> attacks,
-//            ArrayList<Weakness> weaknesses) {
 public Card(String id, String name, int nationalPokedexNumber, String imageUrl,
             String imageUrlHiRes, String subtype, String supertype, int hp,
             ArrayList<String> retreatCost, String number, String artist, String series, String set,
@@ -51,8 +44,6 @@ public Card(String id, String name, int nationalPokedexNumber, String imageUrl,
         this.mSet = set;
         this.mSetCode = setCode;
         this.mTypes = types;
-//        this.mAttacks = attacks;
-//        this.mWeaknesses = weaknesses;
     }
 
     public String getId() { return mId; }
@@ -70,6 +61,4 @@ public Card(String id, String name, int nationalPokedexNumber, String imageUrl,
     public String getSet() { return mSet; }
     public String getSetCode() { return mSetCode; }
     public ArrayList<String> getTypes() { return mTypes; }
-//    public ArrayList<Attack> getAttacks() { return mAttacks; }
-//    public ArrayList<Weakness> getWeaknesses() { return  mWeaknesses; }
 }

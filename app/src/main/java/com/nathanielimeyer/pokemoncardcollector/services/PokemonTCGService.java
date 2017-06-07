@@ -78,36 +78,6 @@ public class PokemonTCGService {
                         types.add(typesJSON.getString(y));
                     }
 
-//                    ArrayList<Attack> attacks = new ArrayList<>();
-//                    JSONArray attacksJSON = cardJSON.getJSONArray("attacks");
-//                    for (int y = 0; y < attacksJSON.length(); y++) {
-//                        JSONObject attackJSON = attacksJSON.getJSONObject(y);
-//                        ArrayList<String> costs = new ArrayList<>();
-//                        JSONArray costsJSON = attackJSON.getJSONArray("cost");
-//                        for (int z = 0; z < costsJSON.length(); z++) {
-//                            costs.add(costsJSON.getString(z));
-//                        }
-//                        String attackName = attackJSON.getString("name");
-//                        String text = attackJSON.getString("text");
-//                        String damage = attackJSON.getString("damage");
-//                        int convertedEnergyCost = attackJSON.getInt("convertedEnergyCost");
-//                        Attack attack = new Attack(costs, attackName, text, damage, convertedEnergyCost);
-//                        attacks.add(attack);
-//                    }
-//
-//                    ArrayList<Weakness> weaknesses = new ArrayList<>();
-//                    JSONArray weaknessesJSON = cardJSON.getJSONArray("weaknesses");
-//                    for (int y = 0; y < weaknessesJSON.length(); y++) {
-//                        JSONObject weaknessJSON = weaknessesJSON.getJSONObject(y);
-//                        String type = weaknessJSON.getString("type");
-//                        String value = weaknessJSON.getString("value");
-//                        Weakness weakness = new Weakness(type, value);
-//                        weaknesses.add(weakness);
-//                    }
-
-//                    Card card = new Card(id, cardName, nationalPokedexNumber, imageUrl,
-//                            imageUrlHiRes, subtype, supertype, hp, retreatCosts, number, artist,
-//                            series, set, setCode, types, attacks, weaknesses);
                     Card card = new Card(id, cardName, nationalPokedexNumber, imageUrl,
                             imageUrlHiRes, subtype, supertype, hp, retreatCosts, number, artist,
                             series, set, setCode, types);
