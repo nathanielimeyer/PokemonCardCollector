@@ -1,7 +1,5 @@
 package com.nathanielimeyer.pokemoncardcollector.services;
 
-import android.util.Log;
-
 import com.nathanielimeyer.pokemoncardcollector.Constants;
 import com.nathanielimeyer.pokemoncardcollector.models.Card;
 
@@ -34,7 +32,6 @@ public class PokemonTCGService {
                 .url(url)
                 .build();
 
-        Log.v(TAG, request.toString());
         Call call = client.newCall(request);
         call.enqueue(callback);
     }
@@ -48,14 +45,10 @@ public class PokemonTCGService {
                 for (int i = 0; i < cardsJSON.length(); i++) {
                     JSONObject cardJSON = cardsJSON.getJSONObject(i);
                     String id = cardJSON.getString("id");
-                    Log.v(TAG, id);
                     String cardName = cardJSON.getString("name");
-                    Log.v(TAG, cardName);
                     int nationalPokedexNumber = cardJSON.getInt("nationalPokedexNumber");
                     String imageUrl = cardJSON.getString("imageUrl");
-                    Log.v(TAG, imageUrl);
                     String imageUrlHiRes = cardJSON.getString("imageUrlHiRes");
-                    Log.v(TAG, imageUrlHiRes);
                     String subtype = cardJSON.getString("subtype");
                     String supertype = cardJSON.getString("supertype");
                     int hp = cardJSON.getInt("hp");

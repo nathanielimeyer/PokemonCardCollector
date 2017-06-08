@@ -1,13 +1,17 @@
 package com.nathanielimeyer.pokemoncardcollector.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nathanielimeyer.pokemoncardcollector.Constants;
 import com.nathanielimeyer.pokemoncardcollector.R;
 import com.nathanielimeyer.pokemoncardcollector.adapters.CardListAdapter;
 import com.nathanielimeyer.pokemoncardcollector.models.Card;
@@ -23,6 +27,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class CardListActivity extends AppCompatActivity {
+    private SharedPreferences mSharedPreferences;
+    private String mRecentSearch;
     public static final String TAG = CardListActivity.class.getSimpleName();
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -38,6 +44,10 @@ public class CardListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentSearch = mSharedPreferences.getString(Constants.PREFERENCES_QUERY_KEY, null);
+        Log.d("Shared Pref Query", mRecentSearch);
 
         ButterKnife.bind(this);
 
