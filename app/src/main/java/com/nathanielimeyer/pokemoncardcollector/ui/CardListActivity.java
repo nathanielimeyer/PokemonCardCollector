@@ -31,13 +31,11 @@ public class CardListActivity extends AppCompatActivity {
     private String mRecentSearch;
     public static final String TAG = CardListActivity.class.getSimpleName();
 
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    private CardListAdapter mAdapter;
-
     @Bind(R.id.resultsTextView) TextView mResultsTextView;
-
     @Bind(R.id.listView) ListView mListView;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
+    private CardListAdapter mAdapter;
     public ArrayList<Card> mCards = new ArrayList<>();
 
     @Override
@@ -55,7 +53,10 @@ public class CardListActivity extends AppCompatActivity {
         String searchString = intent.getStringExtra("searchString");
 
         mResultsTextView.setText("Results for " + searchString + ":");
-        getCardsByName(searchString);
+
+            if ( mRecentSearch != null ) {
+            getCardsByName(mRecentSearch);
+        }
     }
 
     private void getCardsByName(String name) {
