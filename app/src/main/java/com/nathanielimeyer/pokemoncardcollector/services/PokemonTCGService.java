@@ -1,5 +1,7 @@
 package com.nathanielimeyer.pokemoncardcollector.services;
 
+import android.util.Log;
+
 import com.nathanielimeyer.pokemoncardcollector.Constants;
 import com.nathanielimeyer.pokemoncardcollector.models.Card;
 
@@ -42,38 +44,43 @@ public class PokemonTCGService {
                 String jsonData = response.body().string();
                 JSONObject pokemonJSON = new JSONObject(jsonData);
                 JSONArray cardsJSON = pokemonJSON.getJSONArray("cards");
+                Log.d(TAG, "Query returned " + cardsJSON.length() + " cards.");
                 for (int i = 0; i < cardsJSON.length(); i++) {
                     JSONObject cardJSON = cardsJSON.getJSONObject(i);
-                    String id = cardJSON.getString("id");
-                    String cardName = cardJSON.getString("name");
-                    int nationalPokedexNumber = cardJSON.getInt("nationalPokedexNumber");
-                    String imageUrl = cardJSON.getString("imageUrl");
-                    String imageUrlHiRes = cardJSON.getString("imageUrlHiRes");
-                    String subtype = cardJSON.getString("subtype");
-                    String supertype = cardJSON.getString("supertype");
-                    int hp = cardJSON.getInt("hp");
+                    String id = cardJSON.optString("id");
+                    String cardName = cardJSON.optString("name");
+                    String nationalPokedexNumber = cardJSON.optString("nationalPokedexNumber");
+                    String imageUrl = cardJSON.optString("imageUrl");
+                    String imageUrlHiRes = cardJSON.optString("imageUrlHiRes");
+                    String subtype = cardJSON.optString("subtype");
+                    String supertype = cardJSON.optString("supertype");
+                    int hp = cardJSON.optInt("hp");
 
                     ArrayList<String> retreatCosts = new ArrayList<>();
-                    JSONArray retreatCostJSON = cardJSON.getJSONArray("retreatCost");
-                    for (int y = 0; y < retreatCostJSON.length(); y++) {
-                        retreatCosts.add(retreatCostJSON.getString(y));
+                    JSONArray retreatCostJSON = cardJSON.optJSONArray("retreatCost");
+                    if (retreatCostJSON != null) {
+                        for (int y = 0; y < retreatCostJSON.length(); y++) {
+                            retreatCosts.add(retreatCostJSON.optString(y));
+                        }
                     }
-
-                    String number = cardJSON.getString("number");
-                    String artist = cardJSON.getString("artist");
-                    String series = cardJSON.getString("series");
-                    String set = cardJSON.getString("set");
-                    String setCode = cardJSON.getString("setCode");
+                    String number = cardJSON.optString("number");
+                    String artist = cardJSON.optString("artist");
+                    String series = cardJSON.optString("series");
+                    String set = cardJSON.optString("set");
+                    String setCode = cardJSON.optString("setCode");
 
                     ArrayList<String> types = new ArrayList<>();
-                    JSONArray typesJSON = cardJSON.getJSONArray("types");
-                    for (int y = 0; y < typesJSON.length(); y++) {
-                        types.add(typesJSON.getString(y));
+                    JSONArray typesJSON = cardJSON.optJSONArray("types");
+                    if (typesJSON != null) {
+                        for (int y = 0; y < typesJSON.length(); y++) {
+                            types.add(typesJSON.optString(y));
+                        }
                     }
-
+                    String rarity = cardJSON.optString("rarity");
+                    String text = cardJSON.optString("text");
                     Card card = new Card(id, cardName, nationalPokedexNumber, imageUrl,
                             imageUrlHiRes, subtype, supertype, hp, retreatCosts, number, artist,
-                            series, set, setCode, types);
+                            series, set, setCode, types, rarity, text);
                     cards.add(card);
                 }
             }

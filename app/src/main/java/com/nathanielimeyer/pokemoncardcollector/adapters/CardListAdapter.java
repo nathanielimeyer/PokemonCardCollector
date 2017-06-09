@@ -75,7 +75,9 @@ private Context mContext;
         public void bindCard(Card card) {
             Picasso.with(mContext).load(card.getImageUrl()).into(mCardImageView);
             mNameTextView.setText(card.getName());
-            mPokemonTypeTextView.setText(card.getTypes().get(0));
+            if (card.getTypes().size() > 0) {
+                mPokemonTypeTextView.setText(card.getTypes().get(0));
+            }
             mHpTextView.setText("HP: " + card.getHp());
         }
     }
