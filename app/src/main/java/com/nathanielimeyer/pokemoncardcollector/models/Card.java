@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Card {
     String mId;
     String mName;
-    int mNationalPokedexNumber;
+    String mNationalPokedexNumber;
     String mImageUrl;
     String mImageUrlHiRes;
     String mSubtype;
@@ -20,15 +20,17 @@ public class Card {
     String mSeries;
     String mSet;
     String mSetCode;
+    String mRarity;
+    String mText;
     ArrayList<String> mTypes = new ArrayList<>();
 
     public Card() {
     }
 
-public Card(String id, String name, int nationalPokedexNumber, String imageUrl,
+public Card(String id, String name, String nationalPokedexNumber, String imageUrl,
             String imageUrlHiRes, String subtype, String supertype, int hp,
             ArrayList<String> retreatCost, String number, String artist, String series, String set,
-            String setCode, ArrayList<String> types) {
+            String setCode, ArrayList<String> types, String rarity, String text) {
         this.mId = id;
         this.mName = name;
         this.mNationalPokedexNumber = nationalPokedexNumber;
@@ -44,11 +46,13 @@ public Card(String id, String name, int nationalPokedexNumber, String imageUrl,
         this.mSet = set;
         this.mSetCode = setCode;
         this.mTypes = types;
+        this.mRarity = rarity;
+        this.mText = text;
     }
 
     public String getId() { return mId; }
     public String getName() { return mName; }
-    public int getNationalPokedexNumber() { return mNationalPokedexNumber; }
+    public String getNationalPokedexNumber() { return mNationalPokedexNumber; }
     public String getImageUrl() { return mImageUrl; }
     public String getmImageUrlHiRes() { return mImageUrlHiRes; }
     public String getSubtype() { return mSubtype; }
@@ -61,4 +65,6 @@ public Card(String id, String name, int nationalPokedexNumber, String imageUrl,
     public String getSet() { return mSet; }
     public String getSetCode() { return mSetCode; }
     public ArrayList<String> getTypes() { return mTypes; }
+    public String getRarity() { return mRarity; }
+    public String getText() { return mText; }
 }

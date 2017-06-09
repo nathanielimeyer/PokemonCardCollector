@@ -53,7 +53,9 @@ public class CardDetailFragment extends Fragment {
         Picasso.with(view.getContext()).load(mCard.getmImageUrlHiRes()).into(mImageLabel);
         mNameLabel.setText(mCard.getName());
         mHpLabel.setText("HP: " + mCard.getHp());
-        mTypeLabel.setText(mCard.getTypes().get(0));
+        if (mCard.getTypes().size() > 0) {
+            mTypeLabel.setText(mCard.getTypes().get(0));
+        }
         mFavoriteLabel.setText("Favorite coming soon");
         mCollectionLabel.setText("Collections coming soon");
         mAddToDeckLabel.setText("Decks coming soon");
