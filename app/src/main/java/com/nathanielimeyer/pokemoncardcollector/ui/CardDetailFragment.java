@@ -8,7 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.nathanielimeyer.pokemoncardcollector.Constants;
 import com.nathanielimeyer.pokemoncardcollector.R;
 import com.nathanielimeyer.pokemoncardcollector.models.Card;
 import com.squareup.picasso.Picasso;
@@ -18,7 +22,7 @@ import org.parceler.Parcels;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class CardDetailFragment extends Fragment {
+public class CardDetailFragment extends Fragment implements View.OnClickListener {
     @Bind(R.id.cardImageView) ImageView mImageLabel;
     @Bind(R.id.cardNameTextView) TextView mNameLabel;
     @Bind(R.id.cardHpTextView) TextView mHpLabel;
@@ -26,7 +30,7 @@ public class CardDetailFragment extends Fragment {
     @Bind(R.id.favoriteTextView) TextView mFavoriteLabel;
     @Bind(R.id.collectionTextView) TextView mCollectionLabel;
     @Bind(R.id.addToDeckTextView) TextView mAddToDeckLabel;
-    @Bind(R.id.saveCardButton) TextView mSaveCardLabel;
+    @Bind(R.id.saveCardButton) TextView mSaveCardButton;
 
     private Card mCard;
 
@@ -59,9 +63,19 @@ public class CardDetailFragment extends Fragment {
         mFavoriteLabel.setText("Favorite coming soon");
         mCollectionLabel.setText("Collections coming soon");
         mAddToDeckLabel.setText("Decks coming soon");
-        mSaveCardLabel.setText("Save coming soon");
+        mSaveCardButton.setOnClickListener(this);
 
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v == mSaveCardButton) {
+            DatabaseReference cardRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_CARDS);
+            cardRef.push().setValue(mCard);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
