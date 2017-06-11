@@ -67,7 +67,7 @@ private Context mContext;
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, CardDetailActivity.class);
-            intent.putExtra("position", itemPosition);
+            intent.putExtra("position", itemPosition + "");
             intent.putExtra("cards", Parcels.wrap(mCards));
             mContext.startActivity(intent);
         }
