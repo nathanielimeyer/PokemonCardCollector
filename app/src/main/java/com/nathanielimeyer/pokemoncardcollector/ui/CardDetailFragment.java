@@ -54,7 +54,7 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
         View view = inflater.inflate(R.layout.fragment_card_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext()).load(mCard.getmImageUrlHiRes()).into(mImageLabel);
+        Picasso.with(view.getContext()).load(mCard.getImageUrlHiRes()).into(mImageLabel);
         mNameLabel.setText(mCard.getName());
         mHpLabel.setText("HP: " + mCard.getHp());
         if (mCard.getTypes().size() > 0) {
