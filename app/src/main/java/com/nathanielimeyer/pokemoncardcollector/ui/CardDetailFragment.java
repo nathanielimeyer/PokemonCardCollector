@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nathanielimeyer.pokemoncardcollector.Constants;
@@ -71,10 +73,16 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (v == mSaveCardButton) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             DatabaseReference cardRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_CARDS);
-            cardRef.push().setValue(mCard);
+                    .getReference(Constants.FIREBASE_CHILD_CARDS)
+                    .child(uid);
+            DatabaseReference pushRef = cardRef.push();
+            String pushId = pushRef.getKey();
+            mCard.setPushId(pushId);
+            pushRef.setValue(mCard);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }

@@ -23,6 +23,7 @@ public class Card {
     String rarity;
     String text;
     ArrayList<String> types = new ArrayList<>();
+    private String pushId;
 
     public Card() {
     }
@@ -67,4 +68,7 @@ public Card(String id, String name, String nationalPokedexNumber, String imageUr
     public ArrayList<String> getTypes() { return types; }
     public String getRarity() { return rarity; }
     public String getText() { return text; }
+
+    public String getPushId() { return pushId; }
+    public void setPushId(String pushId) { this.pushId = pushId; }
 }

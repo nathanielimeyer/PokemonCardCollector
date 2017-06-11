@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nathanielimeyer.pokemoncardcollector.Constants;
@@ -32,9 +34,15 @@ public class CollectedCardsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_results);
         ButterKnife.bind(this);
 
-        mCardReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CARDS);
-        setUpFirebaseAdapter();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
 
+        mCardReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_CARDS)
+                .child(uid);
+
+        setUpFirebaseAdapter();
     }
 
     private void setUpFirebaseAdapter() {
