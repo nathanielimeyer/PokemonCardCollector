@@ -146,10 +146,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void goToCollection() {
-//        Intent intent = new Intent(MainActivity.this, CollectionListActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        startActivity(intent);
-//        finish();
+        Intent intent = new Intent(MainActivity.this, CollectedCardsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void goToSearch() {

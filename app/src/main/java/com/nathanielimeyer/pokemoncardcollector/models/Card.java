@@ -54,7 +54,7 @@ public Card(String id, String name, String nationalPokedexNumber, String imageUr
     public String getName() { return name; }
     public String getNationalPokedexNumber() { return nationalPokedexNumber; }
     public String getImageUrl() { return imageUrl; }
-    public String getmImageUrlHiRes() { return imageUrlHiRes; }
+    public String getImageUrlHiRes() { return imageUrlHiRes; }
     public String getSubtype() { return subtype; }
     public String getSupertype() { return supertype; }
     public int getHp() { return hp; }
