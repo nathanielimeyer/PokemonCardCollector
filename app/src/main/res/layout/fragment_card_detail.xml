@@ -115,6 +115,18 @@
                     android:layout_marginBottom="10dp"
                     android:gravity="center_vertical"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View this in the Pokedex"
+                    android:drawableLeft="@drawable/ic_open_in_browser_black_24dp"
+                    android:drawablePadding="4dp"
+                    android:id="@+id/goToBrowserTextView"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"/>
             </LinearLayout>
 
             <Button
