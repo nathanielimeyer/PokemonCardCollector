@@ -47,7 +47,7 @@ public class CollectedCardsActivity extends AppCompatActivity {
 
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Card, FirebaseCardViewHolder>
-                (Card.class, R.layout.card_list_item, FirebaseCardViewHolder.class,
+                (Card.class, R.layout.card_list_item_drag, FirebaseCardViewHolder.class,
                         mCardReference) {
 
             @Override
