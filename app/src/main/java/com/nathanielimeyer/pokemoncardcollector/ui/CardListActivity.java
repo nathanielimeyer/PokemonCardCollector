@@ -8,9 +8,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.nathanielimeyer.pokemoncardcollector.Constants;
 import com.nathanielimeyer.pokemoncardcollector.R;
 import com.nathanielimeyer.pokemoncardcollector.adapters.CardListAdapter;
@@ -85,5 +89,70 @@ public class CardListActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_logout) {
+            logout();
+            return true;
+//        } else if (id == R.id.action_about) {
+//            goToAbout();
+//            return true;
+        } else if (id == R.id.action_search) {
+            goToSearch();
+            return true;
+        } else if (id == R.id.action_user_collection) {
+            goToCollection();
+            return true;
+//        } else if (id == R.id.action_user_decks) {
+//            goToDecks();
+//            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void goToDecks() {
+//        Intent intent = new Intent(CardListActivity.this, DeckListActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent);
+//        finish();
+    }
+
+    private void goToCollection() {
+        Intent intent = new Intent(CardListActivity.this, CollectedCardsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void goToSearch() {
+        Intent intent = new Intent(CardListActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void goToAbout() {
+//        Intent intent = new Intent(CardListActivity.this, LoginActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent);
+//        finish();
+    }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(CardListActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }

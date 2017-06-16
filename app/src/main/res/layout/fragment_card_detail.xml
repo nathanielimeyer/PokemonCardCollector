@@ -79,32 +79,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mark as favorite"
-                    android:id="@+id/favoriteTextView"
-                    android:drawableLeft="@drawable/ic_favorite_border_black_24dp"
-                    android:drawablePadding="4dp"
-                    android:textColor="@color/colorTextIcons"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add to collection"
-                    android:id="@+id/collectionTextView"
-                    android:drawableLeft="@drawable/ic_done_black_24dp"
-                    android:drawablePadding="4dp"
-                    android:textColor="@color/colorTextIcons"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="Add to deck"
                     android:drawableLeft="@drawable/ic_library_add_black_24dp"
                     android:drawablePadding="4dp"
@@ -130,12 +104,12 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/saveCardButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save Card"
-                android:id="@+id/saveCardButton"
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorAccent"
+                android:text="Add to collection"
                 android:textColor="@color/colorTextIcons"
                 android:textSize="15sp" />
         </RelativeLayout>

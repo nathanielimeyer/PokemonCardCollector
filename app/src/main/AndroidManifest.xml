@@ -12,7 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.CardListActivity" />
+        <activity android:name=".ui.CardListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nathanielimeyer.pokemoncardcollector.ui.MainActivity">
+            </meta-data>
+        </activity>
         <activity android:name=".ui.About" />
         <activity android:name=".ui.CardDetailActivity" />
         <activity android:name=".ui.CreateAccountActivity" />
@@ -23,7 +28,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.CollectedCardsActivity"></activity>
+        <activity android:name=".ui.CollectedCardsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nathanielimeyer.pokemoncardcollector.ui.MainActivity">
+            </meta-data>
+        </activity>
     </application>
 
 </manifest>

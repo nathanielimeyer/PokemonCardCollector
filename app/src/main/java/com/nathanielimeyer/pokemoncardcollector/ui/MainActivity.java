@@ -122,18 +122,18 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_logout) {
             logout();
             return true;
-        } else if (id == R.id.action_about) {
-            goToAbout();
-            return true;
+//        } else if (id == R.id.action_about) {
+//            goToAbout();
+//            return true;
         } else if (id == R.id.action_search) {
             goToSearch();
             return true;
         } else if (id == R.id.action_user_collection) {
             goToCollection();
             return true;
-        } else if (id == R.id.action_user_decks) {
-            goToDecks();
-            return true;
+//        } else if (id == R.id.action_user_decks) {
+//            goToDecks();
+//            return true;
         }
         return super.onOptionsItemSelected(item);
     }

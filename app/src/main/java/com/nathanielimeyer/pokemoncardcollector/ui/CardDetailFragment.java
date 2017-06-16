@@ -1,6 +1,5 @@
 package com.nathanielimeyer.pokemoncardcollector.ui;
 
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,8 +30,8 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.cardNameTextView) TextView mNameLabel;
     @Bind(R.id.cardHpTextView) TextView mHpLabel;
     @Bind(R.id.cardTypeTextView) TextView mTypeLabel;
-    @Bind(R.id.favoriteTextView) TextView mFavoriteLabel;
-    @Bind(R.id.collectionTextView) TextView mCollectionLabel;
+//    @Bind(R.id.favoriteTextView) TextView mFavoriteLabel;
+//    @Bind(R.id.collectionTextView) TextView mCollectionLabel;
     @Bind(R.id.addToDeckTextView) TextView mAddToDeckLabel;
     @Bind(R.id.saveCardButton) TextView mSaveCardButton;
     @Bind(R.id.goToBrowserTextView) TextView mBrowserLink;
@@ -68,8 +67,8 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
         if (mCard.getTypes().size() > 0) {
             mTypeLabel.setText(mCard.getTypes().get(0));
         }
-        mFavoriteLabel.setText("Favorite coming soon");
-        mCollectionLabel.setText("Collections coming soon");
+//        mFavoriteLabel.setText("Favorite coming soon");
+//        mCollectionLabel.setText("Collections coming soon");
         mAddToDeckLabel.setText("Decks coming soon");
 
         mBrowserLink.setOnClickListener(this);
