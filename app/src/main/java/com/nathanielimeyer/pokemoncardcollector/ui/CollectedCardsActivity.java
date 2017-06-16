@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -11,19 +12,21 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.nathanielimeyer.pokemoncardcollector.Constants;
 import com.nathanielimeyer.pokemoncardcollector.R;
+import com.nathanielimeyer.pokemoncardcollector.adapters.FirebaseCardListAdapter;
 import com.nathanielimeyer.pokemoncardcollector.adapters.FirebaseCardViewHolder;
 import com.nathanielimeyer.pokemoncardcollector.models.Card;
+import com.nathanielimeyer.pokemoncardcollector.util.OnStartDragListener;
+import com.nathanielimeyer.pokemoncardcollector.util.SimpleItemTouchHelperCallback;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class CollectedCardsActivity extends AppCompatActivity {
-    private DatabaseReference mCardReference;
-    private FirebaseRecyclerAdapter mFirebaseAdapter;
-    public static final String TAG = CollectedCardsActivity.class.getSimpleName();
-
+public class CollectedCardsActivity extends AppCompatActivity implements OnStartDragListener {
+    private FirebaseCardListAdapter mFirebaseAdapter;
+    private ItemTouchHelper mItemTouchHelper;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
@@ -34,36 +37,40 @@ public class CollectedCardsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_results);
         ButterKnife.bind(this);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-
-        mCardReference = FirebaseDatabase
-                .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_CARDS)
-                .child(uid);
-
         setUpFirebaseAdapter();
     }
 
     private void setUpFirebaseAdapter() {
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Card, FirebaseCardViewHolder>
-                (Card.class, R.layout.card_list_item, FirebaseCardViewHolder.class,
-                        mCardReference) {
 
-            @Override
-            protected void populateViewHolder(FirebaseCardViewHolder viewHolder,
-                                              Card model, int position) {
-                viewHolder.bindCard(model);
-            }
-        };
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        Query query = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_CARDS)
+                .child(uid)
+                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
+
+        mFirebaseAdapter = new FirebaseCardListAdapter(Card.class, R.layout.card_list_item_drag, FirebaseCardViewHolder.class,
+                        query, this, this);
+
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mFirebaseAdapter.cleanup();
+    }
+
+    @Override
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
     }
 }

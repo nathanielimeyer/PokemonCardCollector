@@ -27,8 +27,8 @@ public class CardDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mCards = Parcels.unwrap(getIntent().getParcelableExtra("cards"));
-        // TD: why cast position as a string in cardListAdapter only to parse it as an int here?
-        int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
+
+        int startingPosition = getIntent().getIntExtra("position", 0);
 
 
         adapterViewPager = new CardPagerAdapter(getSupportFragmentManager(), mCards);
