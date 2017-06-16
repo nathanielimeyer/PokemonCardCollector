@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.nathanielimeyer.pokemoncardcollector.Constants;
 import com.nathanielimeyer.pokemoncardcollector.R;
 import com.nathanielimeyer.pokemoncardcollector.adapters.FirebaseCardListAdapter;
@@ -24,7 +25,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class CollectedCardsActivity extends AppCompatActivity implements OnStartDragListener {
-    private DatabaseReference mCardReference;
     private FirebaseCardListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
 
@@ -45,13 +45,14 @@ public class CollectedCardsActivity extends AppCompatActivity implements OnStart
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-        mCardReference = FirebaseDatabase
+        Query query = FirebaseDatabase
                 .getInstance()
                 .getReference(Constants.FIREBASE_CHILD_CARDS)
-                .child(uid);
+                .child(uid)
+                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
 
         mFirebaseAdapter = new FirebaseCardListAdapter(Card.class, R.layout.card_list_item_drag, FirebaseCardViewHolder.class,
-                        mCardReference, this, this);
+                        query, this, this);
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

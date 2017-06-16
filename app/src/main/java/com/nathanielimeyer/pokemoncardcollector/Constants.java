@@ -6,4 +6,5 @@ public class Constants {
     public static final String PREFERENCES_QUERY_KEY = "query";
     public static final String FIREBASE_CHILD_SEARCHED_POKEMON = "searchedPokemon";
     public static final String FIREBASE_CHILD_CARDS = "cards";
+    public static final String FIREBASE_QUERY_INDEX = "index";
 }
