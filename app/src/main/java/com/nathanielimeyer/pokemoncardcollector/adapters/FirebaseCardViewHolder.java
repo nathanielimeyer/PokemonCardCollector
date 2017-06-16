@@ -29,7 +29,7 @@ public class FirebaseCardViewHolder extends RecyclerView.ViewHolder implements V
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
     public static final String TAG = FirebaseCardViewHolder.class.getSimpleName();
-
+    public ImageView mCardImageView;
 
     View mView;
     Context mContext;
@@ -42,7 +42,7 @@ public class FirebaseCardViewHolder extends RecyclerView.ViewHolder implements V
     }
 
     public void bindCard(Card card) {
-        ImageView cardImageView = (ImageView) mView.findViewById(R.id.cardImageView);
+        mCardImageView = (ImageView) mView.findViewById(R.id.cardImageView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.cardNameTextView);
         TextView pokemonTypeTextView = (TextView) mView.findViewById(R.id.pokemonTypeView);
         TextView hpTextView = (TextView) mView.findViewById(R.id.hpTextView);
@@ -51,7 +51,7 @@ public class FirebaseCardViewHolder extends RecyclerView.ViewHolder implements V
                 .load(card.getImageUrl())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
                 .centerCrop()
-                .into(cardImageView);
+                .into(mCardImageView);
 
         nameTextView.setText(card.getName());
         pokemonTypeTextView.setText(card.getTypes().get(0));
