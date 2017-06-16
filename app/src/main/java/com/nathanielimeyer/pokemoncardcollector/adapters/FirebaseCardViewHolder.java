@@ -3,6 +3,7 @@ package com.nathanielimeyer.pokemoncardcollector.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,13 +20,14 @@ import com.nathanielimeyer.pokemoncardcollector.Constants;
 import com.nathanielimeyer.pokemoncardcollector.R;
 import com.nathanielimeyer.pokemoncardcollector.models.Card;
 import com.nathanielimeyer.pokemoncardcollector.ui.CardDetailActivity;
+import com.nathanielimeyer.pokemoncardcollector.util.ItemTouchHelperViewHolder;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class FirebaseCardViewHolder extends RecyclerView.ViewHolder {
+public class FirebaseCardViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
     public static final String TAG = FirebaseCardViewHolder.class.getSimpleName();
@@ -55,5 +57,22 @@ public class FirebaseCardViewHolder extends RecyclerView.ViewHolder {
         nameTextView.setText(card.getName());
         pokemonTypeTextView.setText(card.getTypes().get(0));
         hpTextView.setText("HP: " + card.getHp());
+    }
+
+    @Override
+    public void onItemSelected() {
+        itemView.animate()
+                .alpha(0.7f)
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(500);
+    }
+
+    @Override
+    public void onItemClear() {
+        itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f);
     }
 }
