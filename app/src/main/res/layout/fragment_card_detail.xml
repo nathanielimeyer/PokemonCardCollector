@@ -40,7 +40,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4.5/5"
+                android:text="HP"
                 android:id="@+id/cardHpTextView"
                 android:layout_alignTop="@+id/cardNameTextView"
                 android:layout_alignParentRight="true"
@@ -51,7 +51,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Brunch, American"
+                android:text="Type"
                 android:id="@+id/cardTypeTextView"
                 android:layout_below="@+id/cardNameTextView"
                 android:layout_alignParentLeft="true"

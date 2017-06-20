@@ -68,9 +68,6 @@ public class MainActivity extends AppCompatActivity {
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();
 
-        Typeface amatic = Typeface.createFromAsset(getAssets(), "fonts/AmaticSC-Regular.ttf");
-        mTextView.setTypeface(amatic);
-
         mSearchByNameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
