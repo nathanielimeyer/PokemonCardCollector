@@ -41,6 +41,7 @@ public class CardDetailActivity extends AppCompatActivity {
         mViewPager.setCurrentItem(startingPosition);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
